@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { LogIn, LogOut } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
 import { safeReturnPath } from "@/lib/dictionary/validation";
 import { DRAFT_KEY } from "@/lib/reader";
 import { signOut } from "@/app/auth/actions";
 import type { AccountState } from "@/lib/dictionary/types";
 
 export function AuthButton({ account, returnPath, compact = false }: { account: AccountState; returnPath?: string; compact?: boolean }) {
-  const router = useRouter();
+  const pathname = usePathname();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   async function handleClick() {
@@ -26,19 +25,17 @@ export function AuthButton({ account, returnPath, compact = false }: { account: 
         window.location.assign("/");
         return;
       }
-      const client = createClient();
-      if (!client) { setError("Sign-in is not connected yet. You can still explore every public feature."); return; }
-      const next = safeReturnPath(returnPath || window.location.pathname + window.location.search);
-      const callback = new URL("/auth/callback", window.location.origin);
-      callback.searchParams.set("next", next);
-      const { error: authError } = await client.auth.signInWithOAuth({
-        provider: "google",
-        options: { redirectTo: callback.toString(), queryParams: { prompt: "select_account" } },
-      });
-      if (authError) setError("We couldn’t start Google sign-in. Please try again.");
-      else router.refresh();
     } catch { setError("The account service is temporarily unavailable. Please try again."); }
     finally { setBusy(false); }
+  }
+  if (!account.user && account.configured) {
+    const href = `/auth/start?${new URLSearchParams({ next: safeReturnPath(returnPath || pathname) })}`;
+    return <span className="auth-control"><a className={`button ${compact ? "button-secondary" : "button-primary"}`} href={href}
+      onClick={(event) => {
+        // Keep the exact document version/query when JavaScript is available.
+        // The ordinary anchor still starts sign-in without hydration or browser Auth.
+        event.currentTarget.href = `/auth/start?${new URLSearchParams({ next: safeReturnPath(returnPath || window.location.pathname + window.location.search) })}`;
+      }}><LogIn size={16} aria-hidden="true" />{compact ? "Sign in" : "Continue with Google"}</a></span>;
   }
   return <span className="auth-control">
     <button className={`button ${account.user || compact ? "button-secondary" : "button-primary"}`} type="button" disabled={busy || !account.configured} onClick={handleClick} title={!account.configured ? "Google sign-in will be available when account services are connected." : undefined}>

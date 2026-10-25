@@ -19,7 +19,7 @@ export default async function SignInPage({ searchParams }: { searchParams: Promi
       <p className="eyebrow">YOUR WORDS, IN ONE PLACE</p>
       <h1>Build your own dictionary.</h1>
       <p className="muted">Save terms as you read, add your own meanings, and return to the exact bill where you found them. Your dictionary is private and follows you across devices.</p>
-      {params.error && <p role="alert" className="form-error">{params.error === "cancelled" ? "Sign-in was cancelled. Your unsaved draft stays in this tab so you can try again." : "Sign-in didn’t finish. Please try again. Your unsaved draft stays in this tab."}</p>}
+      {params.error && <p role="alert" className="form-error">{params.error === "start" ? "We couldn’t start Google sign-in. Please try again. If this continues, open this page directly in Safari or Chrome." : params.error === "cancelled" ? "Sign-in was cancelled. Your unsaved draft stays in this tab so you can try again." : "Sign-in didn’t finish. Please try again. Your unsaved draft stays in this tab."}</p>}
       {!account.configured && <p className="notice">Google sign-in is not connected in this installation yet. Bill search, reading, and the public glossary are available without an account.</p>}
       {account.error && <p role="alert">{account.error}</p>}
       <AuthButton account={account} returnPath={next} />
