@@ -1,0 +1,45 @@
+import type { GlossaryTerm } from './glossary';
+const sourceUrl = 'https://www.congress.gov/help/legislative-glossary';
+const term = (id: string, name: string, aliases: string[], definition: string): GlossaryTerm => ({
+  id, term: name, aliases, definition, category: 'Legislative vocabulary', sourceUrl, verifiedAt: '2026-10-23',
+});
+// Original plain-language explanations checked against the official congressional glossary.
+// Use specific phrases rather than highlighting everyday words with ambiguous meanings.
+export const legislativeTerms: GlossaryTerm[] = [
+  term('continuing-resolution', 'Continuing resolution', ['continuing resolutions', 'continuing appropriation'], 'A funding law that keeps federal agencies or programs operating when their regular annual appropriations have not been enacted. It can provide temporary or full-year funding.'),
+  term('budget-resolution', 'Budget resolution', ['budget resolutions'], 'A congressional plan setting overall budget levels used when considering spending and revenue legislation. It is a concurrent resolution, not a law, and is not sent to the president.'),
+  term('conference-committee', 'Conference committee', ['conference committees'], 'A temporary group of House and Senate members appointed to work out differences between versions of legislation passed by the two chambers.'),
+  term('conference-report', 'Conference report', ['conference reports'], 'The document presenting the compromise reached by a conference committee. Its existence alone does not mean both chambers have approved the agreement.'),
+  term('conferee', 'Conferee', ['conferees'], 'A House or Senate member appointed to a conference committee to negotiate differences between the chambers’ versions of a measure.'),
+  term('committee-report', 'Committee report', ['committee reports'], 'A document accompanying legislation reported by a committee. It explains provisions and may include committee votes, cost estimates, arguments for approval, and members’ views.'),
+  term('companion-measure', 'Companion measure', ['companion measures', 'companion bill', 'companion bills'], 'Legislation introduced in the other chamber that is identical or substantially similar. The two measures still have their own legislative histories.'),
+  term('identical-bill', 'Identical bill', ['identical bills'], 'A bill whose introduced text matches another bill word for word. Later amendments can make their texts different.'),
+  term('joint-resolution', 'Joint resolution', ['joint resolutions'], 'A measure used to propose a law or a constitutional amendment, designated H.J.Res. or S.J.Res. A proposal to amend the Constitution follows a different approval process from ordinary legislation.'),
+  term('concurrent-resolution', 'Concurrent resolution', ['concurrent resolutions'], 'A measure for matters involving both chambers, such as congressional business or budget plans. It does not enact a law or go to the president.'),
+  term('simple-resolution', 'Simple resolution', ['simple resolutions'], 'A measure considered by one chamber, designated H.Res. or S.Res., for matters such as that chamber’s procedures. It does not enact a federal law.'),
+  term('amendment-exchange', 'Amendment exchange', ['amendments between the houses'], 'A way to resolve House–Senate differences by sending a measure back and forth with amendments until both chambers agree to the same wording.'),
+  term('substitute-amendment', 'Amendment in the nature of a substitute', ['amendments in the nature of a substitute'], 'An amendment proposing to replace the entire text of the measure being considered.'),
+  term('germaneness', 'Germaneness', ['germane'], 'The requirement that an amendment closely relate to the subject or purpose of the text it would change. The House generally requires this; Senate requirements depend on the procedure being used.'),
+  term('motion-to-proceed', 'Motion to proceed', ['motion to proceed to consider'], 'A Senate motion to bring a measure or other matter before the chamber for consideration. Agreeing to it begins consideration; it does not pass the bill.'),
+  term('motion-to-table', 'Motion to table', ['motions to table'], 'A motion to dispose of a pending question, such as an amendment, without debate on the motion itself. Agreeing to table an amendment defeats that amendment, not necessarily the bill.'),
+  term('motion-to-recommit', 'Motion to recommit', ['motions to recommit'], 'A motion to send a measure back to committee. Its timing and permitted form depend on the chamber’s rules.'),
+  term('point-of-order', 'Point of order', ['points of order'], 'An objection that a proposed action violates a chamber’s or committee’s procedural rules, asking the presiding officer to enforce them.'),
+  term('previous-question', 'Previous question', ['motion for the previous question'], 'A House procedure that, when agreed to, ends further debate and amendments on the pending matter and brings it to a vote.'),
+  term('special-rule', 'Special rule', ['special rules'], 'A resolution from the House Rules Committee that sets the terms for considering specified legislation, including debate and amendment procedures, if the House adopts it.'),
+  term('suspension-of-the-rules', 'Suspension of the rules', ['suspend the rules'], 'A House procedure that limits debate to 40 minutes, does not allow floor amendments, and requires a two-thirds vote for passage. It is commonly used for measures with broad support.'),
+  term('committee-of-the-whole', 'Committee of the Whole', [], 'The House meeting in a special committee form that includes all representatives and uses procedures suited to debating and amending major legislation.'),
+  term('quorum-call', 'Quorum call', ['quorum calls'], 'A procedure to check whether enough members are present to conduct business. In the Senate it can also provide a pause in proceedings; it is not a vote on a bill.'),
+  term('ranking-member', 'Ranking member', ['ranking members'], 'The senior minority-party member of a committee or subcommittee, who typically leads that party’s work on the panel. This is not always the longest-serving member.'),
+  term('committee-chair', 'Committee chair', ['committee chairs', 'committee chairman', 'committee chairwoman'], 'The majority-party member responsible for leading a committee, presiding over meetings, and managing its agenda and resources.'),
+  term('ordered-reported', 'Ordered reported', ['ordered to be reported'], 'A committee has voted to send a measure or matter to its parent chamber. This committee decision does not mean the full chamber has passed it.'),
+  term('congressional-record', 'Congressional Record', [], 'The official record of congressional proceedings and debates, including remarks and information about House and Senate activities.'),
+  term('crs', 'Congressional Research Service', ['CRS'], 'The Library of Congress service that provides nonpartisan policy and legal analysis for Congress. Its analysts write the official bill summaries used in this app.'),
+  term('gpo', 'Government Publishing Office', ['GPO'], 'The legislative-branch agency that publishes and distributes official federal documents, including congressional materials available through GovInfo.'),
+  term('en-bloc', 'En bloc', [], 'Considering or acting on several measures or matters together as a group rather than separately.'),
+  term('adjournment-sine-die', 'Adjournment sine die', ['adjourned sine die', 'sine die'], 'Ending an annual congressional session without setting a day to reconvene that session. The phrase means “without day.”'),
+  term('pro-forma-session', 'Pro forma session', ['pro forma sessions'], 'A usually brief chamber meeting with little or no business, commonly held to avoid a longer recess or the end of a session.'),
+  term('private-bill', 'Private bill', ['private bills'], 'A bill proposing relief or benefits for specifically identified people or organizations, often when another legal remedy is unavailable.'),
+  term('slip-law', 'Slip law', ['slip laws'], 'The first separate official publication of a newly enacted law, before it appears in the permanent collection of laws.'),
+  term('statutes-at-large', 'Statutes at Large', ['United States Statutes at Large'], 'The permanent chronological collection of enacted federal laws and certain other official materials. Citations identify a volume and page.'),
+  term('short-title', 'Short title', ['short titles'], 'A name provided for a bill, law, or portion of one, often for convenient citation. It may change between versions and differs from the formal description in the official title.'),
+];

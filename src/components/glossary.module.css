@@ -1,0 +1,65 @@
+.pageHeading { max-width: 760px; }
+.pageHeading :global(.eyebrow) { display: flex; align-items: center; gap: 8px; }
+.introNote { display: flex; align-items: flex-start; gap: 12px; max-width: 850px; margin: 24px 0 32px; padding: 17px 19px; color: #536470; background: #eef4f2; border: 1px solid #dce7e2; border-radius: 12px; font-size: .9rem; line-height: 1.65; }
+.introNote svg { flex-shrink: 0; margin-top: 3px; color: #426659; }
+.introNote p { margin: 0; }
+.explorer { padding-bottom: 60px; }
+.searchPanel { margin: 0 0 24px; }
+.searchLabel { display: block; margin-bottom: 9px; font-size: .85rem; font-weight: 650; color: #273b43; }
+.searchInputWrap { position: relative; max-width: 680px; }
+.searchInput { width: 100%; min-height: 52px; padding-left: 46px !important; padding-right: 46px !important; background: #fff; }
+.searchInput::-webkit-search-cancel-button { appearance: none; }
+.searchIcon { position: absolute; top: 50%; left: 16px; transform: translateY(-50%); color: #71817f; pointer-events: none; }
+.clearSearch { display: inline-flex; align-items: center; justify-content: center; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; background: transparent; border: 0; color: #546860; border-radius: 8px; cursor: pointer; }
+.clearSearch:hover { background: #eef3f0; }
+.alphabet { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 19px; }
+.letterButton { min-width: 39px; min-height: 39px; padding: 8px 12px; border: 1px solid #dce4de; border-radius: 8px; color: #52625c; background: #fff; font: inherit; font-size: .84rem; font-weight: 600; cursor: pointer; }
+.letterButton:hover { border-color: #6e8e7d; color: #284f3c; }
+.activeLetter { color: #fff; background: #2c503e; border-color: #2c503e; }
+.activeLetter:hover { color: #fff; background: #244534; }
+.resultsHeader { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin: 26px 0 17px; font-size: .85rem; }
+.resultsHeader p { margin: 0; }
+.resetButton { border: 0; background: transparent; font: inherit; color: #355c45; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.termGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.termCard { display: flex; flex-direction: column; padding: 25px !important; scroll-margin-top: 100px; }
+.cardHeading { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.cardHeading h2 { margin: 0; color: #21362c; font-size: 1.28rem; line-height: 1.35; letter-spacing: -.025em; }
+.initial { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: #f0f3ed; color: #66806b; font-family: Georgia, serif; font-size: 1rem; }
+.cardDefinition { flex: 1; margin: 16px 0 22px; color: #57655f; font-size: .94rem; line-height: 1.75; }
+.cardFooter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 9px; padding-top: 16px; border-top: 1px solid #e9ede7; }
+.sourceLink { display: inline-flex; align-items: center; gap: 5px; color: #365c47; font-size: .78rem; font-weight: 600; text-decoration: none; }
+.sourceLink:hover { text-decoration: underline; text-underline-offset: 3px; }
+.reviewDate { color: #77837c; font-size: .7rem; }
+.emptyState { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 48px 24px !important; text-align: center; }
+.emptyState svg { color: #65806e; }
+.emptyState h2 { margin: 0; font-size: 1.3rem; }
+.emptyState p { max-width: 450px; margin: 0 0 6px; }
+.term { display: inline; padding: 0; margin: 0; border: 0; border-radius: 2px; color: inherit; background: transparent; font: inherit; line-height: inherit; text-align: inherit; text-decoration: underline dotted #829b8b; text-underline-offset: 4px; text-decoration-thickness: 1.5px; cursor: help; -webkit-user-select: text; user-select: text; }
+.term:hover { background: #e9f0e9; text-decoration-color: #3c6850; }
+.term:focus-visible, .sourceLink:focus-visible, .letterButton:focus-visible, .closeButton:focus-visible, .clearSearch:focus-visible, .resetButton:focus-visible { outline: 2px solid #416e54; outline-offset: 4px; }
+.dialog { position: fixed; inset: 0; margin: auto; width: min(490px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow-y: auto; padding: 26px; border: 1px solid #dfe5dc; border-radius: 18px; background: #fffefb; color: #273a30; box-shadow: 0 24px 90px #17302633; }
+.dialog::backdrop { background: #15271f70; backdrop-filter: blur(3px); }
+.dialogTop { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.definitionLabel { display: inline-flex; align-items: center; gap: 8px; color: #63806c; font-size: .65rem; font-weight: 700; letter-spacing: .12em; }
+.closeButton { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex-shrink: 0; border: 0; border-radius: 50%; color: #53685c; background: #f0f3ec; cursor: pointer; }
+.closeButton:hover { background: #e3eade; }
+.dialogTitle { margin: 16px 0 13px; font-size: 1.8rem; line-height: 1.25; letter-spacing: -.04em; }
+.dialogDefinition { margin: 0; line-height: 1.8; font-size: 1rem; color: #475b4f; }
+.contextNote { margin: 20px 0; padding: 13px; background: #f3f5ee; border-radius: 9px; font-size: .8rem; line-height: 1.6; color: #6b766d; }
+.dialogFooter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+@media (max-width: 640px) {
+  .termGrid { grid-template-columns: 1fr; }
+  .termCard { padding: 21px !important; }
+  .introNote { font-size: .84rem; }
+  .letterButton { min-width: 40px; min-height: 40px; }
+  .dialog { padding: 22px; }
+}
+.initial{font-family:var(--font-subheading)}
+:global([data-theme=dark]) .introNote,:global([data-theme=dark]) .contextNote,:global([data-theme=dark]) .initial{background:var(--soft);color:var(--muted);border-color:var(--border)}
+:global([data-theme=dark]) .dialog,:global([data-theme=dark]) .letterButton,:global([data-theme=dark]) .searchInput{background:var(--surface);color:var(--ink);border-color:var(--border)}
+:global([data-theme=dark]) .activeLetter{background:var(--primary);color:var(--primary-text)}
+:global([data-theme=dark]) .cardHeading h2,:global([data-theme=dark]) .searchLabel{color:var(--ink)}
+:global([data-theme=dark]) .cardDefinition,:global([data-theme=dark]) .dialogDefinition,:global([data-theme=dark]) .reviewDate{color:var(--muted)}
+:global([data-theme=dark]) .sourceLink,:global([data-theme=dark]) .resetButton,:global([data-theme=dark]) .definitionLabel{color:var(--green)}
+:global([data-theme=dark]) .closeButton,:global([data-theme=dark]) .clearSearch:hover,:global([data-theme=dark]) .term:hover{background:var(--soft);color:var(--ink)}
+:global([data-theme=dark]) .cardFooter{border-color:var(--border)}

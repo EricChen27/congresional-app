@@ -1,0 +1,7 @@
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+export function ForumExplorer({bills}:{bills:{id:string;title:string;label:string;path:string}[]}){
+ const [query,setQuery]=useState('');const [page,setPage]=useState(1);const matched=bills.filter(bill=>`${bill.label} ${bill.title}`.toLowerCase().includes(query.toLowerCase().trim()));
+ return <section><label htmlFor="forum-search">Find a bill discussion</label><input id="forum-search" className="field" type="search" value={query} onChange={event=>{setQuery(event.target.value);setPage(1);}} placeholder="Search by title or bill number"/><p role="status" className="muted">{matched.length} bill discussions available</p><div className="learn-grid">{matched.slice((page-1)*18,page*18).map(bill=><article className="card learn-card" key={bill.id}><span className="eyebrow">{bill.label}</span><h2>{bill.title}</h2><Link className="text-link" href={bill.path}>Open discussion →</Link></article>)}</div>{!matched.length&&<p className="notice">No matching bills. Try a different title or number.</p>}<nav className="pagination" aria-label="Forum pages"><button className="button button-secondary" disabled={page===1} onClick={()=>setPage(page-1)}>Previous</button><span>Page {page} of {Math.max(1,Math.ceil(matched.length/18))}</span><button className="button button-secondary" disabled={page*18>=matched.length} onClick={()=>setPage(page+1)}>Next</button></nav></section>;
+}

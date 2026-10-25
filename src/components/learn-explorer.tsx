@@ -1,0 +1,10 @@
+"use client";
+import { useState } from 'react';
+import { glossaryTerms } from '@/data/glossary';
+import { glossarySourceLabel } from '@/lib/glossary';
+import { SelectMenu } from './select-menu';
+import { TermDictionaryButton } from './dictionary-terms';
+const groups=['Government basics','Agencies & organizations','Public programs','Voting & elections','Legislative vocabulary','Rights & liberties','Political participation'];
+export function LearnExplorer(){const [query,setQuery]=useState('');const [category,setCategory]=useState('');const terms=glossaryTerms.filter(term=>(!category||(term.category||'Legislative vocabulary')===category)&&[term.term,...term.aliases,term.definition].join(' ').toLowerCase().includes(query.trim().toLowerCase())).sort((a,b)=>a.term.localeCompare(b.term));
+ return <section><div className="learn-toolbar"><label className="learn-search">Find a term or organization<input className="field" type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Try Social Security, FDA, or Senate…"/></label><SelectMenu label="Topic" value={category} onChange={setCategory} options={[{value:'',label:'All topics'},...groups.map(g=>({value:g,label:g}))]}/></div><p className="muted" role="status">{terms.length} of {glossaryTerms.length} terms</p><div className="learn-grid">{terms.map(term=><article className="card learn-card" key={term.id} id={term.id}><span className="eyebrow">{term.category||'Legislative vocabulary'}</span><h2>{term.term}</h2>{term.aliases.some(a=>/^[A-Z]{2,5}$/.test(a))&&<p className="term-acronym">{term.aliases.filter(a=>/^[A-Z]{2,5}$/.test(a)).join(' · ')}</p>}<p>{term.definition}</p><a className="text-link" href={term.sourceUrl} target="_blank" rel="noreferrer">Source: {glossarySourceLabel(term.sourceUrl)} ↗</a><TermDictionaryButton term={term}/></article>)}</div>{!terms.length&&<div className="empty-state card"><h2>No matching terms</h2><p>Try another search, or add a term to your own dictionary below.</p><button className="button button-secondary" onClick={()=>{setQuery('');setCategory('');}}>Reset filters</button></div>}</section>;
+}
