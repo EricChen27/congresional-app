@@ -25,7 +25,7 @@ export default async function RootLayout({ children }: Readonly<{children:React.
   let username:string|undefined;
   if(account.user){try{const client=await createClient();const result=await client?.from('member_profiles').select('username').eq('owner_id',account.user.id).maybeSingle();username=result?.data?.username;}catch{/* Account setup remains accessible during outages. */}}
   const dictionary = account.user ? await getDictionaryEntries() : null;
-  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:`try{var theme=localStorage.getItem('billbreakdown:theme');document.documentElement.dataset.theme=theme==='dark'||theme!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{}`}}/></head><body><DictionaryTermsProvider account={account} entries={(dictionary?.entries||[]).map(({id,term,glossaryId})=>({id,term,glossaryId}))} error={dictionary?.error}>
+  return <html lang="en" data-theme="light" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:`try{var theme=localStorage.getItem('billbreakdown:theme');document.documentElement.dataset.theme=theme==='dark'?'dark':'light'}catch{}`}}/></head><body><DictionaryTermsProvider account={account} entries={(dictionary?.entries||[]).map(({id,term,glossaryId})=>({id,term,glossaryId}))} error={dictionary?.error}>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header"><div className="header-inner">
       <Link href="/" className="brand" aria-label="BillBreakdown home"><span className="brand-mark"><BookOpen size={21}/></span>Bill<span className="brand-light">Breakdown</span><span className="beta-tag">BETA</span></Link>

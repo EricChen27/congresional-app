@@ -72,3 +72,8 @@ body{font-family:var(--font-sans);font-size:16px}h1,.hero h1{font-family:var(--f
 .vote-section{padding:28px;display:grid;gap:20px}.vote-card{border:1px solid var(--border);border-radius:12px;padding:20px;display:grid;gap:12px}.vote-table-wrap{overflow-x:auto}.vote-section table{width:100%;border-collapse:collapse;text-align:left}.vote-section th,.vote-section td{padding:10px;border-bottom:1px solid var(--border)}.vote-section caption{text-align:left;padding:8px 0;font-weight:600}.reader-tabs{overflow-x:auto}.reader-tabs a{white-space:nowrap}@media(max-width:600px){.vote-section{padding:16px}.vote-card{padding:12px}}
 
 .saved-bill-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.saved-bill-controls .button{white-space:normal}.saved-bill-controls p{font-size:12px}.saved-bill-buttons [aria-current=page],.saved-bill-buttons [aria-pressed=true]{border-color:var(--green);color:var(--green)}.main-nav{gap:18px}
+
+/* Keep the homepage explanation section readable in both themes. */
+[data-theme=dark] .how-section{background:var(--surface)}
+[data-theme=dark] .how-top{color:var(--green)}
+[data-theme=dark] .how-top>span{color:var(--muted)}
